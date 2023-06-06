@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LottoController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Lottery;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |     y
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LottoController::class, 'index']);
+Route::post('/', [LottoController::class, 'store']);
