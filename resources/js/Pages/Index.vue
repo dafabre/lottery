@@ -4,22 +4,58 @@
             <div v-for="(draw, index) in combinationForm.draws" :key="index" class="draw-row">
                 <el-row :gutter="10" justify="center">
                     <el-col :span="3">
-                        <el-input-number v-model="draw.first_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.first_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.first_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.first_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.first_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="3">
-                        <el-input-number v-model="draw.second_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.second_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.second_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.second_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.second_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="3">
-                        <el-input-number v-model="draw.third_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.third_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.third_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.third_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.third_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="3">
-                        <el-input-number v-model="draw.fourth_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.fourth_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.fourth_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.fourth_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.fourth_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="3">
-                        <el-input-number v-model="draw.fifth_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.fifth_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.fifth_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.fifth_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.fifth_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="3">
-                        <el-input-number v-model="draw.sixth_draw" :min="1" :max="59" />
+                        <el-form-item
+                            :show-message="combinationForm.errors[`draws.${index}.sixth_draw`] !== undefined"
+                            :error="combinationForm.errors[`draws.${index}.sixth_draw`]"
+                            :validate-status="combinationForm.errors[`draws.${index}.sixth_draw`] !== undefined ? 'error' : ''"
+                        >
+                            <el-input-number v-model="draw.sixth_draw" :min="1" :max="59" />
+                        </el-form-item>
                     </el-col>
                     <el-col :span="1">
                         <el-button type="success" circle @click="generateRandom(draw)">
@@ -49,7 +85,6 @@ const combinationForm = useForm({
     draws : []
 })
 const numberOfDraw = ref(3);
-
 onMounted(() => {
     for(let x = 0; x < numberOfDraw.value; x++)
     {
@@ -140,5 +175,17 @@ const submitCombinations = async () => {
 
 .text-center {
     text-align: center;
+}
+
+:deep(.el-form-item__error) {
+    color: #f56c6c;
+    font-size: 12px;
+    line-height: 1;
+    top: 100%;
+    left: 0;
+}
+
+:deep(.el-form-item.is-error .el-input__wrapper) {
+    box-shadow: 0 0 0 1px #f56c6c inset;
 }
 </style>
